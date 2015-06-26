@@ -1,6 +1,6 @@
-# Zoid
+# Zoid &mdash; Friendly Json API consumer
 
-Friendly Json API consumer.
+![zoid](http://pre12.deviantart.net/81ba/th/pre/f/2013/022/e/1/why_not_zoidberg___by_claustrophobias-d5sbjw8.png)
 
 ## Usage
 
