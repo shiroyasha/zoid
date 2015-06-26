@@ -17,5 +17,9 @@ module Zoid
       @resources.each(&block)
     end
 
+    def [](index)
+      @resources[index]
+    end
+
   end
 end

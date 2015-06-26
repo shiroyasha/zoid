@@ -37,4 +37,8 @@ describe Zoid::Resources do
     expect(@people.select { |person| person.name == "Nebojsa" }).to eq([@person4])
   end
 
+  it "can be indexed" do
+    expect(@people[1]).to eq(@person2)
+  end
+
 end
