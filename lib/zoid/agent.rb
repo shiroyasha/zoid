@@ -4,9 +4,11 @@ require "httpclient"
 
 module Zoid
   class Agent
-    def initialize(url, options = {})
+    def initialize(url, options = {}, &connection_builder)
       @url = url
+
       @options = options
+      @builder = connection_builder
     end
 
     def get(path, params = {})
@@ -23,12 +25,18 @@ module Zoid
 
     private
 
-    def connection
-      @connection ||= Faraday.new(@options.merge(:url => @url)) do |builder|
+    def connection(&block)
+      @connection ||= Faraday.new(connection_options) do |builder|
         builder.response :json
+
+        @builder.call(builder) if @builder
 
         builder.adapter :httpclient
       end
+    end
+
+    def connection_options
+      @options.merge(:url => @url)
     end
   end
 end

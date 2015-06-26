@@ -1,4 +1,4 @@
-# Zoid &mdash; Friendly Json API consumer
+# Zoid &mdash; Friendly JSON API consumer
 
 ![zoid](http://pre12.deviantart.net/81ba/th/pre/f/2013/022/e/1/why_not_zoidberg___by_claustrophobias-d5sbjw8.png)
 
@@ -24,6 +24,18 @@ closed_issues = response.body
 titles = closed_issues.map { |issue| issue.title }
 
 puts titles
+```
+
+### Configuring the connection
+
+Zoid agent uses Faraday to communicate with remote servers,
+and it doesn't try to hide this fact. For example, you
+can use your favorite faraday middlewares with Zoid
+
+``` rb
+Zoid::Agent.new("https://api.github.com") do |faraday|
+  faraday.use FaradayMiddleware::OAuth2, 'TOKEN'
+end
 ```
 
 ## Installation
