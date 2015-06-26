@@ -20,10 +20,16 @@ describe Zoid::Response do
     end
 
     context "body is a simple flat array" do
-      it "converts the body into a Resource" do
-        response = Zoid::Response.new(300, ["1", "2", 3])
+      before do
+        @response = Zoid::Response.new(300, ["1", "2", 3])
+      end
 
-        expect(response.body).to eq(["1", "2", 3])
+      it "creates an instance of 'Zoid::Resources'" do
+        expect(@response.body).to be_instance_of(Zoid::Resources)
+      end
+
+      it "doesn't modify simple values" do
+        expect(@response.body[0]).to eq("1")
       end
     end
 
@@ -36,11 +42,20 @@ describe Zoid::Response do
     end
 
     context "body is an array with nested hashes" do
-      it "converts the hashes into Zoid::Resources" do
-        response = Zoid::Response.new(300, [1, {:a => 2}])
+      before do
+        @response = Zoid::Response.new(300, [1, {:a => 2}])
+      end
 
-        expect(response.body[0]).to eq(1)
-        expect(response.body[1]).to be_instance_of(Zoid::Resource)
+      it "creates an instance of 'Zoid::Resources'" do
+        expect(@response.body).to be_instance_of(Zoid::Resources)
+      end
+
+      it "doesn't modify simple values" do
+        expect(@response.body[0]).to eq(1)
+      end
+
+      it "converts the hashes into Zoid::Resources" do
+        expect(@response.body[1]).to be_instance_of(Zoid::Resource)
       end
     end
 

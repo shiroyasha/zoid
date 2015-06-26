@@ -2,6 +2,8 @@
 
 ![zoid](http://pre12.deviantart.net/81ba/th/pre/f/2013/022/e/1/why_not_zoidberg___by_claustrophobias-d5sbjw8.png)
 
+[![Build Status](https://semaphoreci.com/api/v1/projects/3b10a258-56ac-4e32-8a02-01710a2b817c/468022/badge.svg)](https://semaphoreci.com/shiroyasha/zoid)
+
 ## Usage
 
 Start by creating an agent for the API endpoint

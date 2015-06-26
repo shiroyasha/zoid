@@ -10,10 +10,16 @@ module Zoid
 
     def process(value)
       case value
-      when Array then value.map { |el| process(el) }
+      when Array then process_array(value)
       when Hash  then process_hash(value)
       else value
       end
+    end
+
+    def process_array(array)
+      processed_array = array.map { |el| process(el) }
+
+      Zoid::Resources.new(processed_array)
     end
 
     def process_hash(hash)
