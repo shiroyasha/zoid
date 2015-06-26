@@ -10,33 +10,21 @@ module Zoid
     end
 
     def get(path, params = {})
-      response = @connection.get do |request|
-        request.path(path)
+      response = connection.get do |request|
+        request.path = path
         request.headers['Content-Type'] = "application/json"
         request.params = params
 
         yield if block_given?
       end
 
-      Zoid::Resource.new(response.body)
-    end
-
-    def post(path, params = {})
-      response = @connection.post do |request|
-        request.path(path)
-        request.headers['Content-Type'] = "application/json"
-        request.params = params
-
-        yield if block_given?
-      end
-
-      Zoid::Resource.new(response.body)
+      Zoid::Response.new(response.status, response.body)
     end
 
     private
 
     def connection
-      @connection ||= Faraday.new(options.merge(:url => @url)) do |builder|
+      @connection ||= Faraday.new(@options.merge(:url => @url)) do |builder|
         builder.response :json
 
         builder.adapter :httpclient
