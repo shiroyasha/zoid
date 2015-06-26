@@ -1,0 +1,6 @@
+#!/usr/bin/env ruby
+
+require "bundler/setup"
+require "zoid"
+
+system("gem build zoid.gemspec && gem push zoid-#{Zoid::VERSION}.gem; rm -f zoid-#{Zoid::VERSION}.gem")
