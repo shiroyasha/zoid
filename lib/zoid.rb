@@ -1,5 +1,7 @@
 require "zoid/version"
 
 module Zoid
-  # Your code goes here...
+  require "zoid/agent"
+  require "zoid/response"
+  require "zoid/resource"
 end
