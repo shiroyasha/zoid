@@ -1,28 +1,38 @@
 # Zoid
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/zoid`. To experiment with that code, run `bin/console` for an interactive prompt.
+Friendly Json API consumer.
 
-TODO: Delete this and the text above, and describe your gem
+## Usage
+
+Start by creating an agent for the API endpoint
+
+``` rb
+github_agent = Zoid::Agent.new("https://api.github.com")
+```
+
+Use the agent to communicate with the API
+
+``` rb
+response = github_agent.get "/repos/vmg/redcarpet/issues", {:state => "closed"}
+```
+
+The body is already parsed, and ready for consumation
+
+``` rb
+closed_issues = response.body
+
+titles = closed_issues.map { |issue| issue.title }
+
+puts titles
+```
 
 ## Installation
 
 Add this line to your application's Gemfile:
 
-```ruby
+``` rb
 gem 'zoid'
 ```
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install zoid
-
-## Usage
-
-TODO: Write usage instructions here
 
 ## Development
 
@@ -32,7 +42,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-1. Fork it ( https://github.com/[my-github-username]/zoid/fork )
+1. Fork it ( https://github.com/shiroyasha/zoid/fork )
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
