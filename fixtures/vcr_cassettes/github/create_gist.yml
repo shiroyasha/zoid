@@ -1,0 +1,79 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.github.com/gists
+    body:
+      encoding: UTF-8
+      string: '{"description":"the description for this gist","public":true,"files":{"file1.txt":{"content":"String
+        file contents"}}}'
+    headers:
+      User-Agent:
+      - Faraday v0.9.1
+      Accept:
+      - "*/*"
+      Date:
+      - Mon, 29 Jun 2015 17:30:42 GMT
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Server:
+      - GitHub.com
+      Date:
+      - Mon, 29 Jun 2015 17:30:48 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '2238'
+      Status:
+      - 201 Created
+      X-Ratelimit-Limit:
+      - '60'
+      X-Ratelimit-Remaining:
+      - '57'
+      X-Ratelimit-Reset:
+      - '1435601981'
+      Cache-Control:
+      - public, max-age=60, s-maxage=60
+      Etag:
+      - '"87ca6b57c32cd6c81db19b9b8ec7d53f"'
+      Location:
+      - https://api.github.com/gists/cd3951cffc0282b8b1b0
+      Vary:
+      - Accept
+      - Accept-Encoding
+      X-Github-Media-Type:
+      - github.v3
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - deny
+      Content-Security-Policy:
+      - default-src 'none'
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Expose-Headers:
+      - ETag, Link, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset,
+        X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Github-Request-Id:
+      - B2DE92EF:0FEF:30F8A19:559180C7
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      X-Served-By:
+      - 139317cebd6caf9cd03889139437f00b
+    body:
+      encoding: UTF-8
+      string: '{"url":"https://api.github.com/gists/cd3951cffc0282b8b1b0","forks_url":"https://api.github.com/gists/cd3951cffc0282b8b1b0/forks","commits_url":"https://api.github.com/gists/cd3951cffc0282b8b1b0/commits","id":"cd3951cffc0282b8b1b0","git_pull_url":"https://gist.github.com/cd3951cffc0282b8b1b0.git","git_push_url":"https://gist.github.com/cd3951cffc0282b8b1b0.git","html_url":"https://gist.github.com/cd3951cffc0282b8b1b0","files":{"file1.txt":{"filename":"file1.txt","type":"text/plain","language":"Text","raw_url":"https://gist.githubusercontent.com/anonymous/cd3951cffc0282b8b1b0/raw/b087a4c57f47ffad4025004869d7366ddc82d0d1/file1.txt","size":20,"truncated":false,"content":"String
+        file contents"}},"public":true,"created_at":"2015-06-29T17:30:48Z","updated_at":"2015-06-29T17:30:48Z","description":"the
+        description for this gist","comments":0,"user":null,"comments_url":"https://api.github.com/gists/cd3951cffc0282b8b1b0/comments","forks":[],"history":[{"user":{"login":"invalid-email-address","id":148100,"avatar_url":"https://avatars.githubusercontent.com/u/148100?v=3","gravatar_id":"","url":"https://api.github.com/users/invalid-email-address","html_url":"https://github.com/invalid-email-address","followers_url":"https://api.github.com/users/invalid-email-address/followers","following_url":"https://api.github.com/users/invalid-email-address/following{/other_user}","gists_url":"https://api.github.com/users/invalid-email-address/gists{/gist_id}","starred_url":"https://api.github.com/users/invalid-email-address/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/invalid-email-address/subscriptions","organizations_url":"https://api.github.com/users/invalid-email-address/orgs","repos_url":"https://api.github.com/users/invalid-email-address/repos","events_url":"https://api.github.com/users/invalid-email-address/events{/privacy}","received_events_url":"https://api.github.com/users/invalid-email-address/received_events","type":"User","site_admin":false},"version":"8072e6975c343aec6259c0379072265091f8d7ff","committed_at":"2015-06-29T17:30:48Z","change_status":{"total":1,"additions":1,"deletions":0},"url":"https://api.github.com/gists/cd3951cffc0282b8b1b0/8072e6975c343aec6259c0379072265091f8d7ff"}]}'
+    http_version: 
+  recorded_at: Mon, 29 Jun 2015 17:30:49 GMT
+recorded_with: VCR 2.9.3

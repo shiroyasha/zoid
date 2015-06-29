@@ -27,7 +27,7 @@ module Zoid
       response = connection.post do |request|
         request.path = path
         request.headers['Content-Type'] = "application/json"
-        request.params = params
+        request.body = params
 
         yield if block_given?
       end

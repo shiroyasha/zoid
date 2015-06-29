@@ -29,4 +29,35 @@ describe Zoid::Agent do
       expect(@response.status).to eq(200)
     end
   end
+
+  describe "#post", :vcr => { :cassette_name => "github/create_gist" } do
+    before do
+      github_agent = Zoid::Agent.new("https://api.github.com")
+
+      gist = {
+        :description => "the description for this gist",
+        :public => true,
+        :files => {
+          :"file1.txt" => {
+            :content => "String file contents"
+          }
+        }
+      }
+
+      @response = github_agent.post "/gists", gist
+    end
+
+    it "returns a 'Zoid::Resource'" do
+      expect(@response).to be_instance_of(Zoid::Response)
+    end
+
+    it "saves the http status" do
+      expect(@response.status).to eq(201)
+    end
+
+    it "containes the description of the gist" do
+      expect(@response.body.description).to eq("the description for this gist")
+    end
+  end
+
 end
