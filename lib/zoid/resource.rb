@@ -4,6 +4,10 @@ module Zoid
       @attributes = hash
     end
 
+    def has?(attribute)
+      @attributes.has_key?(attribute.to_s)
+    end
+
     def respond_to_missing?(method, include_private = false)
       @attributes.has_key?[method.to_s]
     end
@@ -14,6 +18,10 @@ module Zoid
       else
         super
       end
+    end
+
+    def methods
+      super + @attributes.keys.map(&:to_sym)
     end
   end
 end
