@@ -35,6 +35,42 @@ module Zoid
       Zoid::Response.new(response.status, response.body)
     end
 
+    def put(path, params = {})
+      response = connection.put do |request|
+        request.path = path
+        request.headers['Content-Type'] = "application/json"
+        request.body = params
+
+        yield if block_given?
+      end
+
+      Zoid::Response.new(response.status, response.body)
+    end
+
+    def patch(path, params = {})
+      response = connection.patch do |request|
+        request.path = path
+        request.headers['Content-Type'] = "application/json"
+        request.body = params
+
+        yield if block_given?
+      end
+
+      Zoid::Response.new(response.status, response.body)
+    end
+
+    def delete(path, params = {})
+      response = connection.delete do |request|
+        request.path = path
+        request.headers['Content-Type'] = "application/json"
+        request.body = params
+
+        yield if block_given?
+      end
+
+      Zoid::Response.new(response.status, response.body)
+    end
+
     private
 
     def connection(&block)
