@@ -23,5 +23,9 @@ module Zoid
     def methods
       super + @attributes.keys.map(&:to_sym)
     end
+
+    def inspect
+      "<#{self.class.name}:#{object_id} #{@attributes.keys}>"
+    end
   end
 end
