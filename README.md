@@ -23,9 +23,7 @@ The body is already parsed, and ready for consumation
 ``` rb
 closed_issues = response.body
 
-titles = closed_issues.map { |issue| issue.title }
-
-puts titles
+closed_issues.pluck(&:title)
 ```
 
 ### Configuring the connection
