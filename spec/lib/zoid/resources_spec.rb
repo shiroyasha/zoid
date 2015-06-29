@@ -11,6 +11,22 @@ describe Zoid::Resources do
     @people = Zoid::Resources.new([@person1, @person2, @person3, @person4])
   end
 
+  it "supports select" do
+    expect(@people.select { |person| person.name == "Nebojsa" }).to eq([@person4])
+  end
+
+  it "supports indexing" do
+    expect(@people[1]).to eq(@person2)
+  end
+
+  it "can tell its length" do
+    expect(@people.length).to eq(4)
+  end
+
+  it "supports map" do
+    expect(@people.map(&:name)).to eq(["Aleksandar", "Igor", "Ervin", "Nebojsa"])
+  end
+
   describe "#find_by" do
     context "when the field exists" do
       context "when there is a resource with such attribute" do
@@ -31,14 +47,6 @@ describe Zoid::Resources do
         expect { @people.find_by(:age => 23) }.to raise_exception(NoMethodError)
       end
     end
-  end
-
-  it "behaves like an enumerable" do
-    expect(@people.select { |person| person.name == "Nebojsa" }).to eq([@person4])
-  end
-
-  it "can be indexed" do
-    expect(@people[1]).to eq(@person2)
   end
 
 end

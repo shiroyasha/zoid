@@ -21,5 +21,9 @@ module Zoid
       @resources[index]
     end
 
+    def length
+      @resources.length
+    end
+
   end
 end
