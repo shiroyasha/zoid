@@ -23,10 +23,23 @@ module Zoid
       Zoid::Response.new(response.status, response.body)
     end
 
+    def post(path, params = {})
+      response = connection.post do |request|
+        request.path = path
+        request.headers['Content-Type'] = "application/json"
+        request.params = params
+
+        yield if block_given?
+      end
+
+      Zoid::Response.new(response.status, response.body)
+    end
+
     private
 
     def connection(&block)
       @connection ||= Faraday.new(connection_options) do |builder|
+        builder.request :json
         builder.response :json
 
         @builder.call(builder) if @builder
